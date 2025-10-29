@@ -1,0 +1,22 @@
+{
+  "name": "lit-tr-components",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "api": "npx json-server --watch db.json --port 4000",
+    "build": "tsc && vite build",
+    "build:umd": "tsc && vite build --mode umd",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "glob": "^11.0.3",
+    "json-server": "0.17.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7"
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>web-components组件库</title>
+    <link rel="stylesheet" href="./theme.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./form.js"></script>
+    <script src="./switch.js"></script>
+    <script src="./button.js"></script>
+  </head>
+  <body>
+    <main
+      class="m-auto bg-pink-100 dark:bg-pink-900 p-6 mt-10"
+      style="width: 1080px"
+    >
+      <h1 class="text-2xl mb-6">web-components组件库</h1>
+      <tr-form>
+        <div class="flex items-center">
+          <strong>大尺寸：</strong>
+          <tr-switch
+            checked
+            id="switch"
+            size="large"
+            onchange="handleChange(event)"
+          >
+            <span slot="icon">🚀</span>
+          </tr-switch>
+          <tr-button onclick="changeSwitch()">开/关</tr-button>
+        </div>
+        <section class="flex items-center mt-6">
+          <strong>小尺寸：</strong>
+          <tr-switch checked="true" size="small"> </tr-switch>
+        </section>
+      </tr-form>
+
+      <div class="mt-8">
+        <tr-button onclick="changeDisabled()">切换disabled</tr-button>
+      </div>
+      <div>
+        原生
+        <input type="checkbox" checked="false" id="native-switch" />
+      </div>
+    </main>
+    <script>
+      const switchEl = document.getElementById("switch");
+      // 可通过2中方式监听变化
+      switchEl.addEventListener("change", e => {
+        console.log("addEventListener", e.detail.checked);
+      });
+      function handleChange(event) {
+        console.log("onchange", event.target.checked);
+      }
+      function changeSwitch() {
+        switchEl.setAttribute("checked", !switchEl.checked);
+      }
+      function changeDisabled() {
+        const formEl = document.querySelector("tr-form");
+        const checked = formEl.hasAttribute("disabled");
+        if (checked) {
+          formEl.removeAttribute("disabled");
+        } else {
+          formEl.setAttribute("disabled", "");
+        }
+      }
+    </script>
+  </body>
+</html>
